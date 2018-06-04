@@ -1,0 +1,43 @@
+﻿生成启动时间为 2018/6/4 9:52:43。
+     1>项目“C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\topcoder\topcoder.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\topcoder.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\topcoder.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt topcoderDlg.cpp /NODEFAULTLIB:msvcrt.lib 
+     1>cl : 命令行 warning D9002: 忽略未知选项“/NODEFAULTLIB:msvcrt.lib”
+         topcoderDlg.cpp
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(420): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>c:\users\xulingfeng\documents\visual studio 2010\projects\topcoder\topcoder\topcoderdlg.cpp(341): warning C4101: “status”: 未引用的局部变量
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Debug\topcoder.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\xulingfeng\Documents\Visual Studio 2010\Projects\topcoder\lib" termb.lib opencv_calib3d341d.lib opencv_core341d.lib opencv_dnn341d.lib opencv_features2d341d.lib opencv_flann341d.lib opencv_highgui341d.lib opencv_imgcodecs341d.lib opencv_imgproc341d.lib opencv_ml341d.lib opencv_objdetect341d.lib opencv_photo341d.lib opencv_shape341d.lib opencv_stitching341d.lib opencv_superres341d.lib opencv_ts341d.lib opencv_video341d.lib opencv_videoio341d.lib opencv_videostab341d.lib /MANIFEST /ManifestFile:"Debug\topcoder.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Debug\topcoder.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Debug\topcoder.lib" /MACHINE:X86 Debug\topcoder.res
+         Debug\topcoder.exe.embed.manifest.res
+         Debug\stdafx.obj
+         Debug\topcoder.obj
+         Debug\topcoderDlg.obj
+         Debug\user.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\topcoder.exe.embed.manifest" /manifest Debug\topcoder.exe.intermediate.manifest "E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         topcoder.vcxproj -> C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Debug\topcoder.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\topcoder.unsuccessfulbuild”。
+         正在对“Debug\topcoder.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\topcoder\topcoder.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.17

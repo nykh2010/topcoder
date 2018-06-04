@@ -1,0 +1,31 @@
+﻿生成启动时间为 2018/5/31 11:27:12。
+     1>项目“C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\topcoder\topcoder.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“x64\Release\topcoder.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+         E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"x64\Release\topcoder.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt topcoderDlg.cpp
+         topcoderDlg.cpp
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(315): warning C4101: “status”: 未引用的局部变量
+       ResourceCompile:
+         所有输出均为最新。
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\x64\Release\topcoder.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\opencv\build\x64\vc14\lib /LIBPATH:"C:\Users\xulingfeng\Documents\Visual Studio 2010\Projects\topcoder\lib" opencv_world341.lib opencv_world341d.lib termb.lib /MANIFEST /ManifestFile:"x64\Release\topcoder.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\x64\Release\topcoder.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\x64\Release\topcoder.lib" /MACHINE:X64 x64\Release\topcoder.res
+         x64\Release\stdafx.obj
+         x64\Release\topcoder.obj
+         x64\Release\topcoderDlg.obj
+         x64\Release\user.obj
+     1>LINK : fatal error LNK1181: 无法打开输入文件“opencv_world341.lib”
+     1>已完成生成项目“C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\topcoder\topcoder.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:03.35

@@ -1,0 +1,38 @@
+﻿生成启动时间为 2018/5/31 11:22:22。
+     1>项目“C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\topcoder\topcoder.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Release\topcoder.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\topcoder.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt topcoderDlg.cpp
+         topcoderDlg.cpp
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(394): warning C4244: “参数”: 从“DWORD”转换到“BYTE”，可能丢失数据
+     1>topcoderDlg.cpp(315): warning C4101: “status”: 未引用的局部变量
+       ResourceCompile:
+         所有输出均为最新。
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Release\topcoder.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\opencv\build\x86\vc14\lib /LIBPATH:"C:\Users\xulingfeng\Documents\Visual Studio 2010\Projects\topcoder\lib" termb.lib opencv_calib3d2413.lib opencv_calib3d2413d.lib opencv_contrib2413.lib opencv_contrib2413d.lib opencv_core2413.lib opencv_core2413d.lib opencv_features2d2413.lib opencv_features2d2413d.lib opencv_flann2413.lib opencv_flann2413d.lib opencv_gpu2413.lib opencv_gpu2413d.lib opencv_highgui2413.lib opencv_highgui2413d.lib opencv_imgproc2413.lib opencv_imgproc2413d.lib opencv_legacy2413.lib opencv_legacy2413d.lib opencv_ml2413.lib opencv_ml2413d.lib opencv_nonfree2413.lib opencv_nonfree2413d.lib opencv_objdetect2413.lib opencv_objdetect2413d.lib opencv_ocl2413.lib opencv_ocl2413d.lib opencv_photo2413.lib opencv_photo2413d.lib opencv_stitching2413.lib opencv_stitching2413d.lib opencv_superres2413.lib opencv_superres2413d.lib opencv_ts2413.lib opencv_ts2413d.lib opencv_video2413.lib opencv_video2413d.lib opencv_videostab2413.lib opencv_videostab2413d.lib /MANIFEST /ManifestFile:"Release\topcoder.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Release\topcoder.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Release\topcoder.lib" /MACHINE:X86 Release\topcoder.res
+         Release\stdafx.obj
+         Release\topcoder.obj
+         Release\topcoderDlg.obj
+         Release\user.obj
+         正在生成代码
+         已完成代码的生成
+         topcoder.vcxproj -> C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Release\topcoder.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\Release\topcoder.exe;#1" /manifest Release\topcoder.exe.intermediate.manifest "E:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         正在删除文件“Release\topcoder.unsuccessfulbuild”。
+         正在对“Release\topcoder.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\xulingfeng\documents\visual studio 2010\Projects\topcoder\topcoder\topcoder.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.00
