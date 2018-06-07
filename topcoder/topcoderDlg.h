@@ -37,5 +37,5 @@ public:
 	afx_msg void OnBnClickedButton1();
 	int ConvertPict(const CString &path);
 	// 串口数据发送
-	void SendImage(BYTE* Bitmap, DWORD * count);
+	void SendImage(BYTE* Bitmap, DWORD count);
 };

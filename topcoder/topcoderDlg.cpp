@@ -22,6 +22,9 @@ using namespace cv;
 
 CUser currentUser;
 
+#define WORKSPACE_PATH		"C:\\Users\\xulingfeng\\Documents\\Visual Studio 2010\\Projects\\topcoder\\Debug\\"
+#define get_file_path(x)	(WORKSPACE_PATH ## x)	
+
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
@@ -252,16 +255,17 @@ CString exact_info(CString attribute, const CByteArray &content) {
 
 CUser *CtopcoderDlg::ReadCard(void)
 {
+	CString path = _T(WORKSPACE_PATH);
 	int status;
-	
 	status = Read_Content(1);
 	if (status != 1) {
 		AfxMessageBox(_T("读卡失败！\n"));
 		return NULL;
 	}
-	GetBmpPhoto("../Debug/xp.wlt");									//生成bmp图片 zp.bmp
+	GetBmpPhoto(get_file_path("xp.wlt"));									//生成bmp图片 zp.bmp
 	CFile content;
-	if (!content.Open(_T("../Debug/wz.txt"),CFile::modeRead | CFile::typeBinary, NULL)) {
+	
+	if (!content.Open(path+_T("wz.txt"),CFile::modeRead | CFile::typeBinary, NULL)) {
 		return NULL;
 	}
 	CByteArray content_byte;
@@ -272,12 +276,12 @@ CUser *CtopcoderDlg::ReadCard(void)
 	UpdateData(true);
 	CEdit *pName = (CEdit *)GetDlgItem(IDC_EDIT1);					//将姓名显示在控件上
 	pName->SetWindowTextW(currentUser.name);
-	if (!PathIsDirectory(currentUser.id)) {
-		CreateDirectory(currentUser.id,NULL);						//创建一个以身份证号命名的文件夹
+	if (!PathIsDirectory(_T(WORKSPACE_PATH)+currentUser.id)) {
+		CreateDirectory(_T(WORKSPACE_PATH)+currentUser.id,NULL);						//创建一个以身份证号命名的文件夹
 	}
 	CFile newFile;
-	CString newPath = _T(".\\")+currentUser.id+_T("\\")+currentUser.name;
-	if (!newFile.Open(_T(".\\")+currentUser.id+'\\'+currentUser.name,CFile::modeCreate | CFile::modeWrite, NULL)) {
+	CString newPath = _T(WORKSPACE_PATH)+currentUser.id+_T("\\")+currentUser.name;
+	if (!newFile.Open(_T(WORKSPACE_PATH)+currentUser.id+'\\'+currentUser.name,CFile::modeCreate | CFile::modeWrite, NULL)) {
 		return NULL;
 	}
 	newFile.Write(currentUser.name+_T("\r\n"),(currentUser.name.GetLength()+2)*2);		//生成新的信息文件
@@ -287,14 +291,14 @@ CUser *CtopcoderDlg::ReadCard(void)
 	CRect rc;
 	imgctl->GetWindowRect(&rc);
 	//获取背景图片
-	Mat photo = imread("../Debug/zp.bmp");
+	Mat photo = imread(get_file_path("zp.bmp"));
 	Mat photo_scale;
 	Size dsize(rc.Width(),rc.Height());
 	resize(photo,photo_scale,dsize);				//改变图像尺寸
-	imwrite("../Debug/zp_scale.bmp",photo_scale);
+	imwrite(get_file_path("zp_scale.bmp"),photo_scale);
 
 	CImage photo_bitmap;
-	photo_bitmap.Load(_T("../Debug/zp_scale.bmp"));			//载入背景	
+	photo_bitmap.Load(path+_T("zp_scale.bmp"));			//载入背景	
 	CBitmap bitmap;
 	bitmap.DeleteObject();
 	bitmap.Attach((HBITMAP)photo_bitmap.operator HBITMAP());
@@ -318,18 +322,19 @@ CUser *CtopcoderDlg::ReadCard(void)
 void CtopcoderDlg::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	CString path = _T(WORKSPACE_PATH);
 	CFile newFile;
 	UpdateData(true);
 	CEdit *pCorp = (CEdit *)GetDlgItem(IDC_EDIT2);
 	pCorp->GetWindowTextW(currentUser.corporation);
 	UpdateData(false);
-	if (!newFile.Open(_T(".\\")+currentUser.id+'\\'+currentUser.name, CFile::modeNoTruncate | CFile::modeWrite, NULL)) {
+	if (!newFile.Open(_T(WORKSPACE_PATH)+currentUser.id+'\\'+currentUser.name, CFile::modeNoTruncate | CFile::modeWrite, NULL)) {
 		return ;
 	}
 	newFile.SeekToEnd();
 	newFile.Write(currentUser.corporation+_T("\r\n"),(currentUser.corporation.GetLength()+2)*2);
 	newFile.Close();
-	this->ConvertPict(_T("../Debug/zp.bmp"));
+	this->ConvertPict(path + _T("zp.bmp"));
 	return;
 }
 
@@ -339,8 +344,8 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 	BYTE readbuf[4096];
 	HBITMAP hBmp;
 	int count,status;
-	CString dst_path = _T(".\\")+currentUser.id+'\\'+currentUser.name+_T(".bmp");
-	CString dst_folder = _T(".\\")+currentUser.id+'\\';
+	CString dst_path = _T(WORKSPACE_PATH)+currentUser.id+'\\'+currentUser.name+_T(".bmp");
+	CString dst_folder = _T(WORKSPACE_PATH)+currentUser.id+'\\';
 	CFile srcFile,dstFile;
 	//GetBmpPhoto("../Debug/xp.wlt");
 	//创建新的身份证照片
@@ -429,9 +434,9 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 	memDC.DrawTextW(name, &rectName, DT_CENTER);		//写入姓名
 	CString corp;
 	CEdit *pCorp = (CEdit *)GetDlgItem(IDC_EDIT2);
-	pName->GetWindowTextW(name);
+	pCorp->GetWindowTextW(corp);
 	CRect rectCorp(102,72,296,108);
-	memDC.DrawTextW(corp,&rectCorp,DT_CENTER | DT_CALCRECT);		//写入单位
+	memDC.DrawTextW(corp,&rectCorp,DT_CENTER);		//写入单位
 	UpdateData(false);
 
 	UpdateData(true);
@@ -445,24 +450,25 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 	outImage.Save(background_path);				//保存背景
 
 	Mat convert = imread(T2A(background_path));
-	Mat convert_gray(128,296,CV_8UC1);
+	Mat convert_gray;
+	Mat convert_gray_bin;
 	cvtColor(convert,convert_gray,CV_BGR2GRAY);		//转灰度图
-	threshold(convert_gray,convert_gray,144,255,THRESH_BINARY_INV);			//转二值反图
+	threshold(convert_gray,convert_gray_bin,144,255,THRESH_BINARY_INV);			//转二值反图
+	
+	Mat convert_t = convert_gray_bin.t();
+	//imwrite("G:\\convert_gray.bmp",convert_t);
 
 	BYTE *buf = (BYTE *)calloc(1,296*128/8);		//转为E-ink屏识别的格式
-	uchar *p = convert_gray.data;
-	int i,j;
-	for (i=0;i<296*128/8;i++) {
-		for (j=0;j<8;j++) {
-			buf[i] <<= 1;
-			if (*p != 0xff) {
-				buf[i] |= 0x01;
-			}
-			p++;
+	uchar *p = convert_t.data;
+	int i,j = 0;
+	for (i=0;i<296*128;i++) {
+		if (p[i] != 0xff) {
+			buf[i/8] |= (0x80 >> (i%8));
 		}
 	}
+
 	DWORD sendcount = 296*128/8;
-	this->SendImage(buf, &sendcount);
+	this->SendImage(buf, sendcount);
 
 	UpdateData(true);
 	hint->SetWindowTextW(_T("已就绪"));
@@ -480,9 +486,9 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 
 
 // 串口数据发送
-void CtopcoderDlg::SendImage(BYTE* Bitmap, DWORD * count)
+void CtopcoderDlg::SendImage(BYTE* Bitmap, DWORD count)
 {
-	CString com = _T("COM2");
+	CString com = _T("COM7");
 	//打开串口
 	HANDLE hCom;
 	hCom = CreateFile(com,GENERIC_READ|GENERIC_WRITE,0,NULL,OPEN_EXISTING,0,NULL);
@@ -500,12 +506,28 @@ void CtopcoderDlg::SendImage(BYTE* Bitmap, DWORD * count)
 	SetCommState(hCom,&dcb);
 	PurgeComm(hCom,PURGE_TXCLEAR);
 
-	DWORD per_send_count = 1024;
 	DWORD length = 0;
-	while(*count > 0) {
-		WriteFile(hCom, Bitmap, per_send_count, &length, NULL);
-		*count = *count - length;
-		per_send_count = *count < per_send_count? *count : 1024;
+	//const char frame_start[] = "start";
+	const char frame_start[5] = {'s','t','a','r','t'};
+	//for (int i=0;i<5;i++) {
+	//WriteFile(hCom,frame_start,strlen(frame_start)+1,&length,NULL);
+	WriteFile(hCom,frame_start,sizeof(frame_start),&length,NULL);
+	//}
+	
+
+	//Sleep(1000);
+
+	DWORD per_send_count = 1024;
+	length = 0;
+	BYTE *pBitmap = Bitmap;
+	while(count > 0) {
+		Sleep(100);
+		WriteFile(hCom, pBitmap, per_send_count, &length, NULL);
+		pBitmap += length;
+		count = count - length;
+		if (count < per_send_count) {
+			per_send_count = count;
+		}
 	}
 	
 	CloseHandle(hCom);		//关闭串口
