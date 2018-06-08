@@ -22,6 +22,13 @@ using namespace cv;
 
 CUser currentUser;
 
+CFont m_oFont;
+CFont m_editFont;
+CBitmap hDisconnectIcon;
+CBitmap hFreshIcon;
+CBitmap hConnectIcon;
+
+
 #define WORKSPACE_PATH		"C:\\Users\\xulingfeng\\Documents\\Visual Studio 2010\\Projects\\topcoder\\Debug\\"
 #define get_file_path(x)	(WORKSPACE_PATH ## x)	
 
@@ -115,8 +122,30 @@ BOOL CtopcoderDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	
-	
+	//HICON hDisconnectIcon = AfxGetApp()->LoadIconW(IDB_BITMAP2);
+	//HICON hFreshIcon = AfxGetApp()->LoadIconW(IDB_BITMAP3);
+	hDisconnectIcon.LoadBitmapW(IDB_BITMAP2);
+	hFreshIcon.LoadBitmapW(IDB_BITMAP3);
+	hConnectIcon.LoadBitmapW(IDB_BITMAP4);
+
+	//HICON ico = AfxGetApp()->LoadIconW(IDI_ICON4);
+
+	UpdateData(true);
+	CButton *button2 = (CButton *)this->GetDlgItem(IDC_BUTTON2);
+	//button2->SetIcon(ico);
+	button2->SetBitmap((HBITMAP)hConnectIcon.GetSafeHandle());
+	CButton *button1 = (CButton *)this->GetDlgItem(IDC_BUTTON1);
+	button1->SetBitmap((HBITMAP)hFreshIcon.GetSafeHandle());
+	UpdateData(false);
+
+	//修改文本框字体
+	CEdit *edit2 = (CEdit *)GetDlgItem(IDC_EDIT2);
+	m_oFont.CreatePointFont(250,_T("隶书"));
+	edit2->SetFont(&m_oFont);
+	CEdit *edit1 = (CEdit *)GetDlgItem(IDC_EDIT1);
+	m_editFont.CreatePointFont(325,_T("隶书"));
+	edit1->SetFont(&m_editFont);
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -158,6 +187,18 @@ void CtopcoderDlg::OnPaint()
 	}
 	else
 	{
+		CBitmap background_bit;
+		background_bit.LoadBitmapW(IDB_BITMAP1);
+
+		CDC background_dc;
+		background_dc.CreateCompatibleDC(this->GetDC());
+		background_dc.SelectObject(&background_bit);
+				
+		CRect rect;
+		this->GetClientRect(&rect);
+
+		this->GetDC()->StretchBlt(0,0,rect.Width(),rect.Height(),&background_dc,0,0,rect.Width(),rect.Height(),SRCCOPY);
+
 		CDialogEx::OnPaint();
 	}
 }
@@ -188,6 +229,7 @@ void CtopcoderDlg::OnBnClickedButton2()
 		}
 		AfxMessageBox(_T("CloseComm Success\n"));
 		pConnectButton->SetWindowTextW(_T("连接"));
+		pConnectButton->SetBitmap((HBITMAP)hConnectIcon.GetSafeHandle());
 	}
 	else {
 		int nPort = InitCommExt();
@@ -195,6 +237,7 @@ void CtopcoderDlg::OnBnClickedButton2()
 			//error_msg.Format(_T("InitComm success, port=%d!\n"), nPort);
 			//AfxMessageBox(error_msg);
 			pConnectButton->SetWindowTextW(_T("断开"));
+			pConnectButton->SetBitmap((HBITMAP)hDisconnectIcon.GetSafeHandle());
 			this->SetTimer(0,500,NULL);
 		}
 		else {
@@ -407,7 +450,7 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 	memDC.SelectObject(&bitmap);
 
 	CFont font;								//创建文字
-	int nHeight = 30;
+	int nHeight = 25;
 	int nWidth = 0;
 	int nEscapement = 0;
 	int nOrientation = 0;
@@ -431,16 +474,18 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 	CString name;
 	CEdit *pName = (CEdit *)GetDlgItem(IDC_EDIT1);
 	pName->GetWindowTextW(name);
-	memDC.DrawTextW(name, &rectName, DT_CENTER);		//写入姓名
+	memDC.DrawTextW(_T("姓名：")+name, &rectName, DT_LEFT);		//写入姓名
 	CString corp;
 	CEdit *pCorp = (CEdit *)GetDlgItem(IDC_EDIT2);
 	pCorp->GetWindowTextW(corp);
 	CRect rectCorp(102,72,296,108);
-	memDC.DrawTextW(corp,&rectCorp,DT_CENTER);		//写入单位
+	memDC.DrawTextW(_T("单位：")+corp,&rectCorp,DT_LEFT);		//写入单位
 	UpdateData(false);
 
 	UpdateData(true);
 	CStatic *hint = (CStatic *)GetDlgItem(IDC_STATIC4);				//提示符
+	//hint->SetWindowTextW(_T("正在刷屏，请稍等..."));
+	hint->ShowWindow(SW_SHOW);
 	hint->SetWindowTextW(_T("正在刷屏，请稍等..."));
 	UpdateData(false);
 
@@ -470,9 +515,11 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 	DWORD sendcount = 296*128/8;
 	this->SendImage(buf, sendcount);
 
-	UpdateData(true);
-	hint->SetWindowTextW(_T("已就绪"));
-	UpdateData(false);
+	//UpdateData(true);
+
+	////hint->ShowWindow(SW_HIDE);
+	//hint->SetWindowTextW(_T("已就绪"));
+	//UpdateData(false);
 
 	//资源回收
 	free(buf);
@@ -488,7 +535,7 @@ int CtopcoderDlg::ConvertPict(const CString &path)
 // 串口数据发送
 void CtopcoderDlg::SendImage(BYTE* Bitmap, DWORD count)
 {
-	CString com = _T("COM7");
+	CString com = _T("COM6");
 	//打开串口
 	HANDLE hCom;
 	hCom = CreateFile(com,GENERIC_READ|GENERIC_WRITE,0,NULL,OPEN_EXISTING,0,NULL);

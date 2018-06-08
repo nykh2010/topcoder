@@ -38,4 +38,5 @@ public:
 	int ConvertPict(const CString &path);
 	// 串口数据发送
 	void SendImage(BYTE* Bitmap, DWORD count);
+	afx_msg void OnStnClickedStatic4();
 };

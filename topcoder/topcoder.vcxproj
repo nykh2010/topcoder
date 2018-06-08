@@ -188,6 +188,14 @@
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
     <None Include="ReadMe.txt" />
+    <None Include="res\background.bmp" />
+    <None Include="res\connect.bmp" />
+    <None Include="res\disconnect.bmp" />
+    <None Include="res\disconnect.ico" />
+    <None Include="res\fresh.bmp" />
+    <None Include="res\fresh.png" />
+    <None Include="res\icon1.ico" />
+    <None Include="res\icon2.ico" />
     <None Include="res\topcoder.ico" />
     <None Include="res\topcoder.rc2" />
   </ItemGroup>

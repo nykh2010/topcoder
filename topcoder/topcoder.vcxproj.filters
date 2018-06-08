@@ -23,6 +23,30 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="res\background.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\fresh.png">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\icon1.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\icon2.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\disconnect.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\fresh.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\disconnect.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\connect.bmp">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="topcoder.h">
